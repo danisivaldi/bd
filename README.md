@@ -8,3 +8,15 @@
     ```bash
         echo 'export LD_LIBRARY_PATH="$HOME/.local/lib/instantclient_12_2"' >> $HOME/.bashrc
     ```
+4. Faça uma cópia do arquivo `.env.example` para um arquivo chamado `.env`, e modifique os campos necessários.
+
+Por exemplo    
+
+```env
+DATABASE_USER=E5248962
+DATABASE_PASSWORD=E5248962
+DATABASE_HOST=grad.icmc.usp.br
+DATABASE_PORT=15215
+DATABASE_SID=orcl
+
+```
