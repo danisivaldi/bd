@@ -1,0 +1,28 @@
+{
+  "name": "prototipo_bd",
+  "version": "0.0.1",
+  "description": "Protótipo de aplicação de sistema de gerenciamento de festas de casamento e infantis",
+  "main": "index.js",
+  "scripts": {
+    "test": "teste"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danisivaldi/bd.git"
+  },
+  "keywords": [
+    "bd",
+    "orclsql"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danisivaldi/bd/issues"
+  },
+  "homepage": "https://github.com/danisivaldi/bd#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "oracledb": "^2.3.0"
+  }
+}
