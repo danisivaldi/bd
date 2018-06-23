@@ -18,7 +18,6 @@ function doRelease(connection) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var queryResult;
   oracledb.getConnection(config, (err, connection) => {
     if (err) {
       console.error(err.message);
@@ -38,9 +37,8 @@ router.get('/', function(req, res, next) {
           return;
         }
 
-        queryResult = result;
         doRelease(connection);
-        res.render('index', { result: queryResult });
+        res.render('index', { result: result });
       });
   });
 
