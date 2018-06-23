@@ -37,9 +37,9 @@
               <tbody>
                 <% result.rows.forEach((row) => { %>
                   <tr>
-                    <% row.forEach((value) => { %>
-                      <td><%= value %></td>
-                    <% }); %>
+                    <% for (var column in row) { %>
+                      <td><%= row[column] %></td>
+                    <% } %>
                   </tr>
                 <% }); %>
               </tbody>
