@@ -1,0 +1,90 @@
+<%- include('../layouts/header') %>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Funcionários</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Novo Funcionário</h3>
+            </div>
+            <form class="form-horizontal" action="/funcionarios" method="post">
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label for="funcao" class="col-sm-2 control-label">Função</label>
+
+                  <div class="col-sm-10">
+                    <select class="select2" name="funcao">
+                      <option value="Fotografos">Fotógrafo</option>
+                      <option value="Tecnicos">Técnico</option>
+                      <option value="Monitores">Monitor</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="cpf" class="col-sm-2 control-label">CPF</label>
+
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="cpf" data-inputmask="'mask': '999.999.999-99'" data-mask/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Nome</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="nome">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contato" class="col-sm-2 control-label">Contato</label>
+
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="contato" data-inputmask="'mask': '99-99999-9999'" data-mask/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="valor" class="col-sm-2 control-label">Valor</label>
+                
+                  <div class="col-sm-3">
+                    <div class="input-group">
+                      <div class="input-group-addon">
+                        R$
+                      </div>
+                      <input class="form-control" type="text" name="valor" data-inputmask="'alias': 'decimal'" data-mask/>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-success pull-right">Adicionar</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include('../layouts/footer') %>

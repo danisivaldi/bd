@@ -2,18 +2,28 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db');
 
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-    // OBS.: callback é o código que será executado após rodar a query
-    let query = 'SELECT * FROM Time WHERE saldo_gols > :saldo_gols';
-    let params = { saldo_gols: 5 };
-    let options = {};
-    let callback = function(result) {
-        res.render('index', { result: result });
-    }
+router.get('/', function (req, res, next) {
+    let query = "SELECT F.data_hora AS Data, F.local, SUM(J.gasto_energia) AS Gasto_Energia\
+                 FROM Festas F, Festa_Jogos FJ, Jogos J\
+                 WHERE F.id = FJ.festa_id AND FJ.jogo = J.nome\
+                 GROUP BY F.data_hora, F.local";
+    
+    db.executeQuery(query, {}, {}, function (result) {
+        res.send(result);
+    });
 
-    db.executeQuery(query, params, options, callback);
+    // res.render('index');
+});
+
+router.get('/testes', function (req, res, next) {
+    res.render('testes');
+});
+
+router.post('/testes', function (req, res, next) {
+    db.executeQuery(req.body.query, {}, {}, function (result) {
+        res.render('testes', { result: result });
+    });
 });
 
 module.exports = router;

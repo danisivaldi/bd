@@ -15,11 +15,49 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- select2 -->
+<script src="/bower_components/select2/dist/js/select2.min.js"></script>
+<!-- InputMask -->
+<script src="/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/plugins/input-mask/jquery.inputmask.numeric.extensions.js"></script>
+<!-- datepicker -->
+<script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="/bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+
+<!-- timepicker -->
+<script src="/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<!-- datatable -->
+<script src="/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="/dist/js/adminlte.min.js"></script>
+
+<script type="text/javascript">
+  $(function () {
+    $('.select2').select2();
+
+    $('.datepicker').datepicker({
+      language: 'pt-BR',
+      autoclose: true,
+      todayHighlight: true,
+      startDate: 'today',
+      format: 'dd/mm/yyyy'
+    });
+
+    $('.timepicker').timepicker({
+      minuteStep: 10,
+      showMeridian: false,
+      showInputs: false
+    });
+
+    $('[data-mask]').inputmask();
+
+    $('.datatable').DataTable();
+  });
+</script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

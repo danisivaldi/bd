@@ -21,6 +21,10 @@ db.doConnect = function (callback) {
 };
 
 db.executeQuery = function(query, params = {}, options = {}, cb) {
+    if (typeof options['outFormat'] === 'undefined') {
+        options['outFormat'] = oracledb.OBJECT;
+    }
+
     db.doConnect((err, connection) => {
         if (err) {
             console.error(err.message);
@@ -33,10 +37,10 @@ db.executeQuery = function(query, params = {}, options = {}, cb) {
                 if (err) {
                     console.error(err.message);
                     db.doRelease(connection);
+                    cb(err);
                     return;
                 }
 
-                console.log(result);
                 db.doRelease(connection);
                 cb(result);
             }

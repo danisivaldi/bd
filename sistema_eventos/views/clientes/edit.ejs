@@ -1,0 +1,65 @@
+<%- include('../layouts/header') %>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>Cliente</h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title">Editar Cliente</h3>
+            </div>
+            <form class="form-horizontal" action="/clientes/<%= cliente.CPF %>" method="post">
+              <div class="box-body">
+
+                <div class="form-group">
+                  <label for="cpf" class="col-sm-2 control-label">CPF</label>
+
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="cpf" data-inputmask="'mask': '999.999.999-99'" data-mask value="<%= cliente.CPF %>" disabled/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label">Nome</label>
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="nome" value="<%= cliente.NOME %>"/>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contato" class="col-sm-2 control-label">Contato</label>
+
+                  <div class="col-sm-3">
+                    <input class="form-control" type="text" name="contato" data-inputmask="'mask': '99-99999-9999'" data-mask value="<%= cliente.CONTATO %>"/>
+                  </div>
+                </div>
+
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-success pull-right">Adicionar</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include('../layouts/footer') %>

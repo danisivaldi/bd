@@ -11,6 +11,9 @@ var logger = require('morgan');
 
 // Routers
 var indexRouter = require('./routes/index');
+var festasRouter = require('./routes/festas');
+var clientesRouter = require('./routes/clientes');
+var funcionariosRouter = require('./routes/funcionarios');
 
 //------------------------------------------//
 
@@ -28,6 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Set Routers
 app.use('/', indexRouter);
+app.use('/festas', festasRouter);
+app.use('/clientes', clientesRouter);
+app.use('/funcionarios', funcionariosRouter);
 
 // Alwayt put this middleware as the last one before error handler
 // catch 404 and forward to error handler
