@@ -40,7 +40,10 @@
                       <td class="text-center">
                         <div class="btn-group">
                           <a href="/clientes/<%= row.CPF %>/edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
-                          <a href="/clientes/" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                          <form method="post" action="/clientes/<%= row.CPF %>" style="display: inline;">
+                            <input type="hidden" name="method" value="DELETE">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                          </form>
                         </div>
                       </td>
                     </tr>

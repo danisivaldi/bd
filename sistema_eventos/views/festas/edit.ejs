@@ -22,8 +22,8 @@
             <div class="box-header with-border">
               <h3 class="box-title">Editar Festa</h3>
             </div>
-            <form class="form-horizontal" action="/festas" method="post">
-              <input type="hidden" value="<%= festa.ID %>"/>
+            <form class="form-horizontal" action="/festas/<%= festa.ID %>" method="post">
+              <input type="hidden" name="id" value="<%= festa.ID %>"/>
 
               <div class="box-body">
 
@@ -32,8 +32,8 @@
 
                   <div class="col-sm-10">
                     <select class="select2" name="tipo">
-                      <option value="infantil"  <%= festa.TIPO.toUpperCase() == 'INFANTIL' ) ? 'selected' : '' %>>Infantil</option>
-                      <option value="casamento" <%= festa.TIPO.toUpperCase() == 'CASAMENTO') ? 'selected' : '' %>>Casamento</option>
+                      <option value="INFANTIL"  <%= (festa.TIPO == 'INFANTIL' ) ? 'selected' : '' %>>Infantil</option>
+                      <option value="CASAMENTO" <%= (festa.TIPO == 'CASAMENTO') ? 'selected' : '' %>>Casamento</option>
                     </select>
                   </div>
                 </div>
@@ -57,7 +57,7 @@
                       <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                       </div>
-                      <input class="form-control datepicker" type="text" name="data">
+                      <input class="form-control datepicker" type="text" name="data" value="<%= festa.DATA_HORA.format('DD/MM/YYYY') %>">
                     </div>
                   </div>
 
@@ -67,7 +67,7 @@
                         <div class="input-group-addon">
                           <i class="fa fa-clock-o"></i>
                         </div>
-                        <input class="form-control timepicker" type="text" name="horario">
+                        <input class="form-control timepicker" type="text" name="horario" value="<%= festa.DATA_HORA.format('kk:mm') %>">
                       </div>
                     </div>
                   </div>
@@ -77,13 +77,13 @@
                   <label for="local" class="col-sm-2 control-label">Local</label>
 
                   <div class="col-sm-6">
-                   <input class="form-control" type="text" name="local">
+                   <input class="form-control" type="text" name="local" value="<%= festa.LOCAL %>">
                   </div>
                 </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-success pull-right">Adicionar</button>
+                <button type="submit" class="btn btn-success pull-right">Atualizar</button>
               </div>
               <!-- /.box-footer -->
             </form>
