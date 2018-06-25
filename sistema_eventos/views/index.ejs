@@ -1,0 +1,105 @@
+<%- include('layouts/header') %>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Dashboard
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+        <li class="active">Here</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    <strong>Gasto de energia com brinquedos - 2018</strong>
+                  </p>
+
+                  <div class="chart">
+                    <!-- Sales Chart Canvas -->
+                    <canvas id="salesChart" style="height: 180px;"></canvas>
+                  </div>
+                  <!-- /.chart-responsive -->
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <div class="box-footer"></div>
+          </div>
+        </div>
+      </div>      
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+<%- include('layouts/footer') %>
+
+<script>
+  var salesChartCanvas = $('#salesChart').get(0).getContext('2d');
+  var salesChart       = new Chart(salesChartCanvas);
+
+  var gastos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  <% gastoEnergia.forEach((gasto) => { %>
+    var ano = <%= gasto.PERIODO.split('-')[0] %>;
+    var mes = <%= gasto.PERIODO.split('-')[1] %>;
+
+    if (ano == (new Date).getFullYear()) {
+      gastos[mes-1] = <%= gasto.GASTO_ENERGIA %>;
+    }
+  <% }) %>
+
+  console.log(gastos);
+
+  var salesChartData = {
+    labels  : ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Dezembro'],
+    datasets: [
+      {
+        label               : 'Electronics',
+        fillColor           : 'rgb(100, 214, 100)',
+        strokeColor         : 'rgb(100, 214, 100)',
+        pointColor          : 'rgb(210, 214, 222)',
+        pointStrokeColor    : '#c1c7d1',
+        pointHighlightFill  : '#fff',
+        pointHighlightStroke: 'rgb(220,220,220)',
+        data                : gastos
+      }
+    ]
+  };
+
+  var salesChartOptions = {
+    showScale               : true,
+    scaleShowGridLines      : false,
+    scaleGridLineColor      : 'rgba(0,0,0,.05)',
+    scaleGridLineWidth      : 1,
+    scaleShowHorizontalLines: true,
+    scaleShowVerticalLines  : true,
+    bezierCurve             : true,
+    bezierCurveTension      : 0.3,
+    pointDot                : false,
+    pointDotRadius          : 4,
+    pointDotStrokeWidth     : 1,
+    pointHitDetectionRadius : 20,
+    datasetStroke           : true,
+    datasetStrokeWidth      : 2,
+    datasetFill             : true,
+    maintainAspectRatio     : true,
+    responsive              : true
+  };
+
+  // Create the line chart
+  salesChart.Line(salesChartData, salesChartOptions);
+</script>
