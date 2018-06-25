@@ -4,16 +4,14 @@ var db = require('../db');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    let query = "SELECT F.data_hora AS Data, F.local, SUM(J.gasto_energia) AS Gasto_Energia\
-                 FROM Festas F, Festa_Jogos FJ, Jogos J\
-                 WHERE F.id = FJ.festa_id AND FJ.jogo = J.nome\
-                 GROUP BY F.data_hora, F.local";
-    
-    db.executeQuery(query, {}, {}, function (result) {
-        res.send(result);
-    });
+    let query = "SELECT TO_CHAR(F.data_hora, 'YYYY-MM') AS Periodo, SUM(J.gasto_energia) AS Gasto_Energia\
+                FROM Festas F, Festa_Jogos FJ, Jogos J\
+                WHERE F.id = FJ.festa_id AND FJ.JOGO = J.nome\
+                GROUP BY TO_CHAR(F.DATA_HORA, 'YYYY-MM')";
 
-    // res.render('index');
+    db.executeQuery(query, {}, {}, function (result) {
+        res.render('index', { gastoEnergia: result.rows });
+    });
 });
 
 router.get('/testes', function (req, res, next) {
