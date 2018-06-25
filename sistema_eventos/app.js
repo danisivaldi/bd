@@ -14,6 +14,11 @@ var indexRouter = require('./routes/index');
 var festasRouter = require('./routes/festas');
 var clientesRouter = require('./routes/clientes');
 var funcionariosRouter = require('./routes/funcionarios');
+var fotosRouter = require('./routes/fotos');
+var atracoes_musicaisRouter = require('./routes/atracoes_musicais');
+var fogosRouter = require('./routes/fogos');
+var brinquedosRouter = require('./routes/brinquedos');
+var jogosRouter = require('./routes/jogos');
 
 //------------------------------------------//
 
@@ -34,6 +39,11 @@ app.use('/', indexRouter);
 app.use('/festas', festasRouter);
 app.use('/clientes', clientesRouter);
 app.use('/funcionarios', funcionariosRouter);
+app.use('/fotos', fotosRouter);
+app.use('/atracoes_musicais', atracoes_musicaisRouter);
+app.use('/fogos', fogosRouter);
+app.use('/brinquedos', brinquedosRouter);
+app.use('/jogos', jogosRouter);
 
 // Alwayt put this middleware as the last one before error handler
 // catch 404 and forward to error handler

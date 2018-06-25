@@ -13,6 +13,8 @@
       </ol>
     </section>
 
+    <% console.log(totalCasamento); %>
+
     <!-- Main content -->
     <section class="content container-fluid">
       <div class="row">
@@ -39,7 +41,147 @@
             <div class="box-footer"></div>
           </div>
         </div>
-      </div>      
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    <strong>Gastos em casamentos</strong>
+                  </p>
+                  
+                  <table class="table table-bordered table-striped datatable">
+                    <thead>
+                      <% totalCasamento.metaData.forEach((column) => { %>
+                        <th><%= column.name %></th>
+                      <% }); %>
+                      <th>Ações</th>
+                    </thead>
+                    <tbody>
+                      <% totalCasamento.rows.forEach((row) => { %>
+                        <tr>
+                          <% for (var column in row) { %>
+                            <td><%= row[column] %></td>
+                          <% } %>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <a href="/clientes/<%= row.CPF %>/edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                              <form method="post" action="/clientes/<%= row.CPF %>" style="display: inline;">
+                                <input type="hidden" name="method" value="DELETE">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <div class="box-footer"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    <strong>Gastos em festas infantis</strong>
+                  </p>
+                  
+                  <table class="table table-bordered table-striped datatable">
+                    <thead>
+                      <% totalInfantil.metaData.forEach((column) => { %>
+                        <th><%= column.name %></th>
+                      <% }); %>
+                      <th>Ações</th>
+                    </thead>
+                    <tbody>
+                      <% totalInfantil.rows.forEach((row) => { %>
+                        <tr>
+                          <% for (var column in row) { %>
+                            <td><%= row[column] %></td>
+                          <% } %>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <a href="/clientes/<%= row.CPF %>/edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                              <form method="post" action="/clientes/<%= row.CPF %>" style="display: inline;">
+                                <input type="hidden" name="method" value="DELETE">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <div class="box-footer"></div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="box">
+            <div class="box-header">
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="text-center">
+                    <strong>Resumo Fabricantes Fogos de artifício</strong>
+                  </p>
+                  
+                  <table class="table table-bordered table-striped datatable">
+                    <thead>
+                      <% fabricante.metaData.forEach((column) => { %>
+                        <th><%= column.name %></th>
+                      <% }); %>
+                      <th>Ações</th>
+                    </thead>
+                    <tbody>
+                      <% fabricante.rows.forEach((row) => { %>
+                        <tr>
+                          <% for (var column in row) { %>
+                            <td><%= row[column] %></td>
+                          <% } %>
+                          <td class="text-center">
+                            <div class="btn-group">
+                              <a href="/clientes/<%= row.CPF %>/edit" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+                              <form method="post" action="/clientes/<%= row.CPF %>" style="display: inline;">
+                                <input type="hidden" name="method" value="DELETE">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-trash"></i></button>
+                              </form>
+                            </div>
+                          </td>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                  
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+            <div class="box-footer"></div>
+          </div>
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -61,8 +203,6 @@
       gastos[mes-1] = <%= gasto.GASTO_ENERGIA %>;
     }
   <% }) %>
-
-  console.log(gastos);
 
   var salesChartData = {
     labels  : ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Dezembro'],
